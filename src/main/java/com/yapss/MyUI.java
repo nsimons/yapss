@@ -11,6 +11,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.HorizontalLayout;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -24,22 +25,39 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
-        
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        final HorizontalLayout rootLayout = new HorizontalLayout();
+        setContent(rootLayout);
 
-        Button button = new Button("Click Me");
-        button.addClickListener( e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
+        final VerticalLayout sideLayout = new VerticalLayout();
+        sideLayout.setWidth("250px");
+        rootLayout.addComponent(sideLayout);
+
+        final VerticalLayout mainLayout = new VerticalLayout();
+        rootLayout.addComponent(mainLayout);
+
+        Label home = new Label("Home");
+        sideLayout.addComponent(home);
+
+        Label login = new Label("Login");
+        sideLayout.addComponent(login);
+
+        final Label yapssLabel = new Label("Welcome to YAPSS!");
+
+
+        final TextField submitTextField = new TextField();
+        submitTextField.setCaption("Submit your oneliner question here");
+
+        Button uploadButton = new Button("Upload");
+        uploadButton.addClickListener( e -> {
+            mainLayout.addComponent(new Label("Thanks " + submitTextField.getValue()
                     + ", it works!"));
         });
         
-        layout.addComponents(name, button);
-        layout.setMargin(true);
-        layout.setSpacing(true);
+        mainLayout.addComponents(yapssLabel, submitTextField, uploadButton);
+        rootLayout.setMargin(true);
+        rootLayout.setSpacing(true);
         
-        setContent(layout);
+
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
