@@ -35,21 +35,29 @@ public class MyUI extends UI {
         final VerticalLayout mainLayout = new VerticalLayout();
         rootLayout.addComponent(mainLayout);
 
-        Label home = new Label("Home");
-        sideLayout.addComponent(home);
 
-        Label login = new Label("Login");
-        sideLayout.addComponent(login);
+        Button homeButton = new Button("Home");
+        homeButton.addClickListener( e -> {
+
+        });
+
+        Button loginButton = new Button("Login");
+        loginButton.addClickListener( e -> {
+
+        });
+
+
+        sideLayout.addComponents(homeButton, loginButton);
+        sideLayout.setSpacing(true);
 
         final Label yapssLabel = new Label("Welcome to YAPSS!");
-
 
         final TextField submitTextField = new TextField();
         submitTextField.setCaption("Submit your oneliner question here");
 
         Button uploadButton = new Button("Upload");
         uploadButton.addClickListener( e -> {
-            mainLayout.addComponent(new Label("Thanks " + submitTextField.getValue()
+            mainLayout.addComponent(new Button("Thanks " + submitTextField.getValue()
                     + ", it works!"));
         });
         
