@@ -1,5 +1,7 @@
 package com.yapss;
 
+import com.vaadin.ui.VerticalLayout;
+
 /**
  * Created by Max on 10/10/16.
  *
@@ -10,6 +12,11 @@ package com.yapss;
  */
 public class QuestionForm {
 
+
+
+
     private String title = "";
+
+
     
 }

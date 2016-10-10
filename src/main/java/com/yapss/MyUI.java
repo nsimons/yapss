@@ -6,12 +6,7 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.*;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -23,17 +18,23 @@ import com.vaadin.ui.HorizontalLayout;
 @Theme("mytheme")
 public class MyUI extends UI {
 
+    //private QuestionForm questionForm = QuestionForm.getInstance();
+
+
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+
         final HorizontalLayout rootLayout = new HorizontalLayout();
         setContent(rootLayout);
 
         final VerticalLayout sideLayout = new VerticalLayout();
         sideLayout.setWidth("250px");
-        rootLayout.addComponent(sideLayout);
+
 
         final VerticalLayout mainLayout = new VerticalLayout();
-        rootLayout.addComponent(mainLayout);
+
+
+        rootLayout.addComponents(sideLayout, mainLayout);
 
 
         Button homeButton = new Button("Home");
@@ -52,7 +53,7 @@ public class MyUI extends UI {
 
         final Label yapssLabel = new Label("Welcome to YAPSS!");
 
-        final TextField submitTextField = new TextField();
+        final RichTextArea submitTextField = new RichTextArea();
         submitTextField.setCaption("Submit your oneliner question here");
 
         Button uploadButton = new Button("Upload");

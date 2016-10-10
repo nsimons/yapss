@@ -28,7 +28,7 @@ public class User {
     }
 
     public void setId(Long id) {
-        this.id;
+        this.id = id;
     }
 
     public String getEmail() {
@@ -39,7 +39,7 @@ public class User {
         this.email = email;
     }
 
-    public getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
