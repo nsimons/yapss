@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="app" />
+        <module name="yapssS" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="app" target="1.8" />
+      <module name="yapssS" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
