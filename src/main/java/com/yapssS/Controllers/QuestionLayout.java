@@ -1,4 +1,4 @@
-package com.yapssS;
+package com.yapssS.Controllers;
 
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.data.util.BeanItem;

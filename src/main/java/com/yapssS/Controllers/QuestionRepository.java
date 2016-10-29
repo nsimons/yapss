@@ -1,4 +1,4 @@
-package com.yapssS;
+package com.yapssS.Controllers;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
