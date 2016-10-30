@@ -2,6 +2,7 @@ package com.yapssS.Controllers;
 
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.data.util.BeanItem;
+import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -17,7 +18,7 @@ public class QuestionLayout extends HorizontalLayout {
     private final Button subject;
     private final TextArea text;
     private final VerticalLayout vlayout;
-    private final Button enterView;
+    private final Link enterView;
 
     public QuestionLayout(Question question, QuestionChangeListener changeListener) {
         setSpacing(true);
@@ -26,8 +27,8 @@ public class QuestionLayout extends HorizontalLayout {
         checkBox = new CheckBox();
 
         subject = new Button(question.getSubject());
-
-        enterView = new Button("Go to question");
+        // add view changer here!
+        enterView = new Link("Go to question", new ExternalResource("http://vaadin.com/"));
         enterView.setVisible(false);
 
         text = new TextArea();
@@ -38,10 +39,6 @@ public class QuestionLayout extends HorizontalLayout {
         subject.addClickListener(clickEvent -> {
             text.setVisible(!text.isVisible());
             enterView.setVisible(!enterView.isVisible());
-        });
-
-        enterView.addClickListener(clickEvent -> {
-            // add view changer here!
         });
 
         vlayout = new VerticalLayout();
