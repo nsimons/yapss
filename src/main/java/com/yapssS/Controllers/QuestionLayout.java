@@ -2,10 +2,7 @@ package com.yapssS.Controllers;
 
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.data.util.BeanItem;
-import com.vaadin.ui.Alignment;
-import com.vaadin.ui.CheckBox;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.TextField;
+import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 
 import java.util.Arrays;
@@ -16,25 +13,47 @@ import java.util.Arrays;
  */
 public class QuestionLayout extends HorizontalLayout {
 
-    private final CheckBox done;
-    private final TextField text;
+    private final CheckBox checkBox;
+    private final Button subject;
+    private final TextArea text;
+    private final VerticalLayout vlayout;
+    private final Button enterView;
 
     public QuestionLayout(Question question, QuestionChangeListener changeListener) {
         setSpacing(true);
         setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
-        done = new CheckBox();
-        text = new TextField();
+
+        checkBox = new CheckBox();
+
+        subject = new Button(question.getSubject());
+
+        enterView = new Button("Go to question");
+        enterView.setVisible(false);
+
+        text = new TextArea();
         text.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
         text.setWidth("100%");
+        text.setVisible(false);
+
+        subject.addClickListener(clickEvent -> {
+            text.setVisible(!text.isVisible());
+            enterView.setVisible(!enterView.isVisible());
+        });
+
+        enterView.addClickListener(clickEvent -> {
+            // add view changer here!
+        });
+
+        vlayout = new VerticalLayout();
 
         FieldGroup fieldGroup = new FieldGroup(new BeanItem<>(question));
         fieldGroup.bindMemberFields(this);
         fieldGroup.setBuffered(false);
 
-        addComponents(done, text);
-        setExpandRatio(text, 1);
+        vlayout.addComponents(subject, text);
+        addComponents(checkBox, vlayout, enterView);
 
-        Arrays.asList(done, text).forEach(field->
+        Arrays.asList(text).forEach(field->
             field.addValueChangeListener(change ->
                 changeListener.questionChanged(question))
         );

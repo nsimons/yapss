@@ -23,6 +23,9 @@ public class QuestionArea extends VerticalLayout {
         questionFormLayout.setSpacing(true);
         questionFormLayout.setWidth("80%");
 
+        TextField subjectField = new TextField();
+        subjectField.setWidth("100%");
+
         RichTextArea questionField = new RichTextArea();
         questionField.setWidth("100%");
 
@@ -30,12 +33,17 @@ public class QuestionArea extends VerticalLayout {
         postQuestionBttn.setIcon(FontAwesome.ENVELOPE_O);
         postQuestionBttn.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
-        questionFormLayout.addComponents(questionField, postQuestionBttn);
+        questionFormLayout.addComponents(subjectField, questionField, postQuestionBttn);
         questionFormLayout.setExpandRatio(questionField, 1);
         addComponent(questionFormLayout);
 
         postQuestionBttn.addClickListener(click -> {
-            questionList.save(new Question(questionField.getValue()));
+            if(subjectField.isEmpty() || questionField.isEmpty()) {
+                Notification.show("You need to write both a subject and description of your problem!");
+                return;
+            }
+            questionList.save(new Question(subjectField.getValue(), questionField.getValue()));
+            subjectField.clear();
             questionField.clear();
             questionField.focus();
 

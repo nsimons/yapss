@@ -12,6 +12,8 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private String subject;
+
     private String text;
 
     private boolean done;
@@ -19,7 +21,8 @@ public class Question {
     public Question() {
     }
 
-    public Question(String text) {
+    public Question(String subject, String text) {
+        this.subject = subject;
         this.text = text;
     }
 
@@ -27,6 +30,10 @@ public class Question {
         this.text = text;
         this.done = done;
     }
+
+    public String getSubject() { return subject; }
+
+    public void setSubject(String subject) { this.subject = subject; }
 
     public String getText() {
         return text;
