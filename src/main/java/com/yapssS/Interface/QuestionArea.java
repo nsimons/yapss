@@ -11,6 +11,7 @@ import com.vaadin.data.Item;
 import com.vaadin.data.util.IndexedContainer;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Table.FooterClickEvent;
 import com.vaadin.ui.Table.HeaderClickEvent;
@@ -19,6 +20,7 @@ import com.yapssS.Controllers.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @SuppressWarnings("serial")
+@SpringComponent
 public class QuestionArea extends VerticalLayout {
 
     @Autowired
@@ -56,6 +58,8 @@ public class QuestionArea extends VerticalLayout {
         Button deleteButton = new Button("Delete Question");
         deleteButton.addClickListener(click-> questionList.deleteCompleted());
         addComponent(deleteButton);
+        questionList = new QuestionList();
+        addComponent(questionList);
 
     }
 }

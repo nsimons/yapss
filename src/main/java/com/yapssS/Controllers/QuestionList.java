@@ -21,7 +21,7 @@ public class QuestionList extends VerticalLayout implements QuestionChangeListen
     private List<Question> questions;
 
     @PostConstruct
-    void init() {
+    public void init() {
         setSpacing(true);
 
         setQuestions(repository.findAll());

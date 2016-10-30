@@ -1,5 +1,6 @@
 package com.yapssS;
 
+import com.vaadin.spring.navigator.SpringViewProvider;
 import com.yapssS.Controllers.QuestionList;
 import com.yapssS.Views.LoginView;
 import com.yapssS.Views.MainView;
@@ -21,7 +22,11 @@ public class YapssUI extends UI {
 
     public Navigator navigator;
 
+    @Autowired
+    private SpringViewProvider springViewProvider;
+
     public static final String MAINVIEW = "main";
+    public static final String LOGINVIEW = "";
 
     @Override
     protected void init(VaadinRequest vaadinRequest){
@@ -30,9 +35,10 @@ public class YapssUI extends UI {
         layout.setSpacing(true);
         setContent(layout);
         ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(layout);
-        navigator = new Navigator(UI.getCurrent(), viewDisplay);
-        navigator.addView("", new LoginView());
-        navigator.addView(MAINVIEW, new MainView());
+        navigator = new Navigator(this, viewDisplay);
+        navigator.addProvider(springViewProvider);
+        //navigator.addView("", new LoginView());
+        //navigator.addView(MAINVIEW, new MainView());
     }
 
 }

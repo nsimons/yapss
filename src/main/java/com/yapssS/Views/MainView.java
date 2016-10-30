@@ -5,6 +5,7 @@
 
 package com.yapssS.Views;
 
+import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import com.yapssS.Controllers.QuestionList;
@@ -12,25 +13,29 @@ import com.yapssS.Interface.Menu;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.yapssS.Interface.QuestionArea;
+import com.yapssS.YapssUI;
 import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
+
 @SuppressWarnings("serial")
+@SpringView(name = YapssUI.MAINVIEW)
 public class MainView extends VerticalLayout implements View {
 
     @Autowired
-    QuestionList questionList;
+    public QuestionList questionList;
 
-
-    public MainView() {
+    @PostConstruct
+    void init() {
         setSizeFull();
         setSpacing(true);
         addComponent(new Menu());
         addComponent(addHeader());
         addComponent(addSubHeader());
         addComponent(new QuestionArea());
-        /*questionList.setWidth("80%");
-        addComponent(questionList);*/
+        questionList.setWidth("80%");
+        addComponent(questionList);
     }
 
     @Override
