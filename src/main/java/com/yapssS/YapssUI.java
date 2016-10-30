@@ -24,6 +24,7 @@ public class YapssUI extends UI {
 
     public static final String MAINVIEW = "main";
     public static final String LOGINVIEW = "";
+    public static final String ARTICLEVIEW = "article";
 
     @Override
     protected void init(VaadinRequest vaadinRequest){
