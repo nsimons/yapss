@@ -1,4 +1,4 @@
-package com.yapssS;
+package com.yapssS.Controllers;
 
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.ui.VerticalLayout;

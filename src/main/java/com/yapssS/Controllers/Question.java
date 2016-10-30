@@ -1,4 +1,4 @@
-package com.yapssS;
+package com.yapssS.Controllers;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
