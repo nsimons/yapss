@@ -26,7 +26,8 @@ public class Question {
         this.text = text;
     }
 
-    public Question(String text, boolean done) {
+    public Question(String subject, String text, boolean done) {
+        this.subject = subject;
         this.text = text;
         this.done = done;
     }
