@@ -5,6 +5,8 @@
 
 package com.yapssS.Views;
 
+import com.vaadin.event.ShortcutAction;
+import com.vaadin.spring.annotation.SpringView;
 import com.yapssS.YapssUI;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -15,10 +17,14 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
+import javax.annotation.PostConstruct;
+
 @SuppressWarnings("serial")
+@SpringView(name = YapssUI.LOGINVIEW)
 public class LoginView extends VerticalLayout implements View {
 
-    public LoginView() {
+    @PostConstruct
+    void init() {
         setSizeFull();
         setSpacing(true);
 
@@ -44,6 +50,7 @@ public class LoginView extends VerticalLayout implements View {
                 getUI().getNavigator().navigateTo(YapssUI.MAINVIEW);
             }
         });
+        button.setClickShortcut(ShortcutAction.KeyCode.ENTER);
         return button;
     }
 
