@@ -7,15 +7,11 @@ package com.yapssS.Views;
 
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.ui.*;
 import com.yapssS.YapssUI;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
 
 import javax.annotation.PostConstruct;
 
@@ -30,7 +26,7 @@ public class LoginView extends VerticalLayout implements View {
 
         Label label = new Label("Enter your information below to log in.");
         TextField username = new TextField("Username");
-        TextField password = new TextField("Password");
+        PasswordField password = new PasswordField("Password");
 
         addComponent(label);
         addComponent(username);
