@@ -53,7 +53,7 @@ public class QuestionLayout extends HorizontalLayout {
         vlayout.addComponents(subject, text);
         addComponents(checkBox, vlayout, enterView);
 
-        Arrays.asList(text).forEach(field->
+        Arrays.asList(checkBox, text).forEach(field->
             field.addValueChangeListener(change ->
                 changeListener.questionChanged(question))
         );
