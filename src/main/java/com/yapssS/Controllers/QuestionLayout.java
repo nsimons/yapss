@@ -5,6 +5,7 @@ import com.vaadin.data.util.BeanItem;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import com.yapssS.YapssUI;
 
 import java.util.Arrays;
 
@@ -18,7 +19,7 @@ public class QuestionLayout extends HorizontalLayout {
     private final Button subject;
     private final TextArea text;
     private final VerticalLayout vlayout;
-    private final Link enterView;
+    private final Button enterView;
 
     public QuestionLayout(Question question, QuestionChangeListener changeListener) {
         setSpacing(true);
@@ -28,7 +29,13 @@ public class QuestionLayout extends HorizontalLayout {
 
         subject = new Button(question.getSubject());
         // add view changer here!
-        enterView = new Link("Go to question", new ExternalResource("http://vaadin.com/"));
+        //enterView = new Link("Go to question", new ExternalResource("http://localhost:8080/#!" + question.getId()));
+        enterView = new Button(question.getId());
+        enterView.addClickListener(clickEvent -> {getUI().getNavigator().navigateTo(YapssUI.ARTICLEVIEW);}
+
+        );
+
+
         enterView.setVisible(false);
 
         text = new TextArea();

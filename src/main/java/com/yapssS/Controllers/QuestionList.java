@@ -37,6 +37,12 @@ public class QuestionList extends VerticalLayout implements QuestionChangeListen
         });
     }
 
+    public void setSpecificQuestion(Long id) {
+
+        questions.add(repository.findOne(id));
+
+    }
+
     public void save(Question question) {
         repository.save(question);
         update();

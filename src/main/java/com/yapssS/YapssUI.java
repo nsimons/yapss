@@ -10,6 +10,9 @@ import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Max on 12/10/16.
  */
@@ -24,8 +27,11 @@ public class YapssUI extends UI {
 
     public static final String MAINVIEW = "main";
     public static final String LOGINVIEW = "";
-    public static final String ARTICLEVIEW = "article";
-
+    public static final String ARTICLEVIEW = "1";
+    /*public static final String ARTICLEVIEW = getUrl();
+    public static String setUrl(Long id) {
+        
+    }*/
     @Override
     protected void init(VaadinRequest vaadinRequest){
         final VerticalLayout layout = new VerticalLayout();
