@@ -13,11 +13,6 @@ import java.util.Arrays;
 /**
  * Created by Max on 12/10/16.
  *
- * https://www.youtube.com/watch?v=tnVKN25dIm8
- *
- * 16.30 tha shit
- *
- *
  */
 public class QuestionLayout extends HorizontalLayout {
 
