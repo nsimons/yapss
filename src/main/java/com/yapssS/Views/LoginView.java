@@ -19,14 +19,19 @@ import javax.annotation.PostConstruct;
 @SpringView(name = YapssUI.LOGINVIEW)
 public class LoginView extends VerticalLayout implements View {
 
+    String currentUser = null;
+    Label label = new Label("Enter your information below to log in.");
+    TextField username = new TextField("Username");
+    PasswordField password = new PasswordField("Password");
+
     @PostConstruct
     void init() {
         setSizeFull();
         setSpacing(true);
 
-        Label label = new Label("Enter your information below to log in.");
-        TextField username = new TextField("Username");
-        PasswordField password = new PasswordField("Password");
+        //Label label = new Label("Enter your information below to log in.");
+        //TextField username = new TextField("Username");
+        //PasswordField password = new PasswordField("Password");
 
         addComponent(label);
         addComponent(username);
@@ -44,10 +49,18 @@ public class LoginView extends VerticalLayout implements View {
             @Override
             public void buttonClick(ClickEvent event) {
                 getUI().getNavigator().navigateTo(YapssUI.MAINVIEW);
+                currentUser = username.getValue();
             }
+
         });
         button.setClickShortcut(ShortcutAction.KeyCode.ENTER);
         return button;
     }
+    public String getCurrentUser()
+    {
+        return currentUser;
+    }
+
+
 
 }
