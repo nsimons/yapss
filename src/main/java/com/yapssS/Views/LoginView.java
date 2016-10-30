@@ -5,6 +5,7 @@
 
 package com.yapssS.Views;
 
+import com.vaadin.event.ShortcutAction;
 import com.vaadin.spring.annotation.SpringView;
 import com.yapssS.YapssUI;
 import com.vaadin.navigator.View;
@@ -49,6 +50,7 @@ public class LoginView extends VerticalLayout implements View {
                 getUI().getNavigator().navigateTo(YapssUI.MAINVIEW);
             }
         });
+        button.setClickShortcut(ShortcutAction.KeyCode.ENTER);
         return button;
     }
 

@@ -1,9 +1,6 @@
 package com.yapssS;
 
 import com.vaadin.spring.navigator.SpringViewProvider;
-import com.yapssS.Controllers.QuestionList;
-import com.yapssS.Views.LoginView;
-import com.yapssS.Views.MainView;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
@@ -37,8 +34,6 @@ public class YapssUI extends UI {
         ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(layout);
         navigator = new Navigator(this, viewDisplay);
         navigator.addProvider(springViewProvider);
-        //navigator.addView("", new LoginView());
-        //navigator.addView(MAINVIEW, new MainView());
     }
 
 }

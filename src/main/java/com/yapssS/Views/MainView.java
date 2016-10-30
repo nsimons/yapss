@@ -14,7 +14,6 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.yapssS.Interface.QuestionArea;
 import com.yapssS.YapssUI;
-import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -24,7 +23,7 @@ import javax.annotation.PostConstruct;
 public class MainView extends VerticalLayout implements View {
 
     @Autowired
-    public QuestionList questionList;
+    private QuestionList questionList;
 
     @PostConstruct
     void init() {
@@ -33,7 +32,7 @@ public class MainView extends VerticalLayout implements View {
         addComponent(new Menu());
         addComponent(addHeader());
         addComponent(addSubHeader());
-        addComponent(new QuestionArea());
+        addComponent(new QuestionArea(questionList));
         questionList.setWidth("80%");
         addComponent(questionList);
     }
