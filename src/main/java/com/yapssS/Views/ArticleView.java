@@ -19,6 +19,8 @@ public class ArticleView extends HorizontalLayout implements View {
     //Long id = 1.0;
     @Autowired
     private QuestionList questionList;
+    //private String id = "" + 1;
+    private Long id;
 
     @PostConstruct
     void init() {
@@ -28,7 +30,6 @@ public class ArticleView extends HorizontalLayout implements View {
 
         addComponent(backButton());
         addComponent(label);
-        addComponent(questionList);
 
 
         // addComponent(questionList.setSpecificQuestion());
@@ -38,6 +39,9 @@ public class ArticleView extends HorizontalLayout implements View {
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         Notification.show("You're viewing a question!");
+        id = Long.parseLong(event.getParameters());
+        addComponent(questionList);
+        questionList.setSpecificQuestion(id);
     }
 
     private Button backButton() {

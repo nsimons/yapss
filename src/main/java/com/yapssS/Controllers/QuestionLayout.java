@@ -30,9 +30,9 @@ public class QuestionLayout extends HorizontalLayout {
         subject = new Button(question.getSubject());
         // add view changer here!
         //enterView = new Link("Go to question", new ExternalResource("http://localhost:8080/#!" + question.getId()));
-        enterView = new Button(question.getId());
+        enterView = new Button(question.getId().toString());
         enterView.addClickListener(clickEvent -> {
-            getUI().getNavigator().navigateTo(YapssUI.ARTICLEVIEW);
+            getUI().getNavigator().navigateTo(YapssUI.ARTICLEVIEW + "/" + question.getId());
             //pass the question ID here somehow, store it and then use it when loading the question from the ArticleVIew
 
             }
