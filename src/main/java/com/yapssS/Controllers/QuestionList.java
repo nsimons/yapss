@@ -37,11 +37,11 @@ public class QuestionList extends VerticalLayout implements QuestionChangeListen
         });
     }
     //find the specific question based on the ID
-    public void setSpecificQuestion(Long id) {
+    /*public void setSpecificQuestion(Long id) {
         addComponent(new QuestionLayout(repository.findOne(id), this));
         //setQuestions(questions.add(id, repository.findOne(id)));
         System.out.println(repository.findOne(id));
-    }
+    }*/
 
     public void save(Question question) {
         repository.save(question);
