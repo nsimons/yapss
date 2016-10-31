@@ -1,3 +1,8 @@
+DESCRIPTION
+===========
+
+A simple site that allows the user to "login", post a question, view posted question and almost to comment on posted questions.
+
 app
 ==============
 
