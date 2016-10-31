@@ -21,17 +21,15 @@ import java.util.List;
 public class YapssUI extends UI {
 
     public Navigator navigator;
-
+    public List<String> urls;
     @Autowired
     private SpringViewProvider springViewProvider;
 
     public static final String MAINVIEW = "main";
     public static final String LOGINVIEW = "";
-    public static final String ARTICLEVIEW = "1";
-    /*public static final String ARTICLEVIEW = getUrl();
-    public static String setUrl(Long id) {
-        
-    }*/
+    public static final String ARTICLEVIEW = "article";
+
+
     @Override
     protected void init(VaadinRequest vaadinRequest){
         final VerticalLayout layout = new VerticalLayout();

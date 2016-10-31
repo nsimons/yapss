@@ -31,11 +31,12 @@ public class QuestionLayout extends HorizontalLayout {
         // add view changer here!
         //enterView = new Link("Go to question", new ExternalResource("http://localhost:8080/#!" + question.getId()));
         enterView = new Button(question.getId());
-        enterView.addClickListener(clickEvent -> {getUI().getNavigator().navigateTo(YapssUI.ARTICLEVIEW);}
+        enterView.addClickListener(clickEvent -> {
+            getUI().getNavigator().navigateTo(YapssUI.ARTICLEVIEW);
+            //pass the question ID here somehow, store it and then use it when loading the question from the ArticleVIew
 
+            }
         );
-
-
         enterView.setVisible(false);
 
         text = new TextArea();
@@ -56,7 +57,6 @@ public class QuestionLayout extends HorizontalLayout {
 
         vlayout.addComponents(subject, text);
         addComponents(checkBox, vlayout, enterView);
-
         Arrays.asList(checkBox, text).forEach(field->
             field.addValueChangeListener(change ->
                 changeListener.questionChanged(question))
