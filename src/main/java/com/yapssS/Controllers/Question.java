@@ -10,7 +10,9 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
+
+    private String subject;
 
     private String text;
 
@@ -19,14 +21,24 @@ public class Question {
     public Question() {
     }
 
-    public Question(String text) {
+    public Question(String subject, String text) {
+        this.subject = subject;
         this.text = text;
+
     }
 
-    public Question(String text, boolean done) {
+    public Question(String subject, String text, boolean done) {
+        this.subject = subject;
         this.text = text;
         this.done = done;
+
     }
+
+    public String getSubject() { return subject; }
+
+    public Long getId() {return id;}
+
+    public void setSubject(String subject) { this.subject = subject; }
 
     public String getText() {
         return text;

@@ -2,11 +2,10 @@ package com.yapssS.Controllers;
 
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.data.util.BeanItem;
-import com.vaadin.ui.Alignment;
-import com.vaadin.ui.CheckBox;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.TextField;
+import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import com.yapssS.YapssUI;
 
 import java.util.Arrays;
 
@@ -16,25 +15,49 @@ import java.util.Arrays;
  */
 public class QuestionLayout extends HorizontalLayout {
 
-    private final CheckBox done;
-    private final TextField text;
+    private final CheckBox checkBox;
+    private final Button subject;
+    private final TextArea text;
+    private final VerticalLayout vlayout;
+    private final Button enterView;
 
     public QuestionLayout(Question question, QuestionChangeListener changeListener) {
         setSpacing(true);
         setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
-        done = new CheckBox();
-        text = new TextField();
+
+        checkBox = new CheckBox();
+
+        subject = new Button(question.getSubject());
+        // add view changer here!
+        //enterView = new Link("Go to question", new ExternalResource("http://localhost:8080/#!" + question.getId()));
+        enterView = new Button(question.getId().toString());
+        enterView.addClickListener(clickEvent -> {
+            getUI().getNavigator().navigateTo(YapssUI.ARTICLEVIEW + "/" + question.getId());
+            //pass the question ID here somehow, store it and then use it when loading the question from the ArticleVIew
+
+            }
+        );
+        enterView.setVisible(false);
+
+        text = new TextArea();
         text.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
         text.setWidth("100%");
+        text.setVisible(false);
+
+        subject.addClickListener(clickEvent -> {
+            text.setVisible(!text.isVisible());
+            enterView.setVisible(!enterView.isVisible());
+        });
+
+        vlayout = new VerticalLayout();
 
         FieldGroup fieldGroup = new FieldGroup(new BeanItem<>(question));
         fieldGroup.bindMemberFields(this);
         fieldGroup.setBuffered(false);
 
-        addComponents(done, text);
-        setExpandRatio(text, 1);
-
-        Arrays.asList(done, text).forEach(field->
+        vlayout.addComponents(subject, text);
+        addComponents(checkBox, vlayout, enterView);
+        Arrays.asList(checkBox, text).forEach(field->
             field.addValueChangeListener(change ->
                 changeListener.questionChanged(question))
         );
