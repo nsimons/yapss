@@ -19,25 +19,33 @@ public class ArticleQuestion extends VerticalLayout implements QuestionChangeLis
     QuestionRepository repository;
     private Question question;
     private Long id;
+    private boolean layout_is_initialized;
+    private ArticleQuestionLayout articleQuestionLayout;
 
     @PostConstruct
     public void init() {
         setSpacing(true);
-        //setSpecificQuestion(repository.findOne(id));
+        layout_is_initialized = false;
     }
 
     public void setQuestion(Question question) {
         this.question = question;
-        //addComponent(new QuestionLayout(repository.findOne(id), this));
-
     }
 
-    //find the specific question based on the ID
     public void setSpecificQuestion(Long id) {
-        addComponent(new ArticleQuestionLayout(repository.findOne(id), this));
-
+        this.id = id;
+        update();
+        if (layout_is_initialized) {
+            articleQuestionLayout.setText(question.getText());
+            articleQuestionLayout.setSubject(question.getSubject());
+        } else {
+            articleQuestionLayout = new ArticleQuestionLayout(question, this);
+            addComponent(articleQuestionLayout);
+            layout_is_initialized = true;
+        }
     }
 
+    /* Unused for now, modify to save comments? */
     public void save(Question question) {
         repository.save(question);
         update();

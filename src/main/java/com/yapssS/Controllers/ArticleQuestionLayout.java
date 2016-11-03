@@ -14,8 +14,8 @@ import java.util.Arrays;
 public class ArticleQuestionLayout extends HorizontalLayout {
 
 
-    private final Label subject;
-    private final TextArea text;
+    private Label subject;
+    private TextArea text;
     private final Label commentHeader;
     private final TextArea comment;
     private final VerticalLayout vlayout;
@@ -41,6 +41,14 @@ public class ArticleQuestionLayout extends HorizontalLayout {
         fieldGroup.setBuffered(false);
         vlayout.addComponents(subject, text, commentHeader, comment);
         addComponent(vlayout);
+    }
+
+    void setText(String text) {
+        this.text.setValue(text);
+    }
+
+    void setSubject(String subject) {
+        this.subject.setValue(subject);
     }
 }
 
