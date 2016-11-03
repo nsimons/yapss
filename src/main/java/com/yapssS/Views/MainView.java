@@ -24,12 +24,14 @@ public class MainView extends VerticalLayout implements View {
 
     @Autowired
     private QuestionList questionList;
+    private String currentUser;
+    private Menu menu;
 
     @PostConstruct
     void init() {
         setSizeFull();
         setSpacing(true);
-        addComponent(new Menu());
+        addComponent(addMenu());
         addComponent(addHeader());
         addComponent(addSubHeader());
         addComponent(new QuestionArea(questionList));
@@ -40,6 +42,8 @@ public class MainView extends VerticalLayout implements View {
     @Override
     public void enter(ViewChangeEvent event) {
         Notification.show("Showing view: Main!");
+        currentUser = event.getParameters();
+        menu.setCurrentUserLabel(currentUser);
     }
 
     private Label addHeader() {
@@ -54,6 +58,11 @@ public class MainView extends VerticalLayout implements View {
         subHeader.setStyleName(ValoTheme.LABEL_TINY);
         subHeader.setSizeUndefined();
         return subHeader;
+    }
+
+    private Menu addMenu() {
+        menu = new Menu();
+        return menu;
     }
 
 }

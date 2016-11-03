@@ -19,19 +19,19 @@ import javax.annotation.PostConstruct;
 @SpringView(name = YapssUI.LOGINVIEW)
 public class LoginView extends VerticalLayout implements View {
 
-    String currentUser = null;
-    Label label = new Label("Enter your information below to log in.");
-    TextField username = new TextField("Username");
-    PasswordField password = new PasswordField("Password");
+    private String currentUser = null;
+    private Label label;
+    private TextField username;
+    private PasswordField password;
 
     @PostConstruct
     void init() {
         setSizeFull();
         setSpacing(true);
 
-        //Label label = new Label("Enter your information below to log in.");
-        //TextField username = new TextField("Username");
-        //PasswordField password = new PasswordField("Password");
+        label = new Label("Enter your information below to log in.");
+        username = new TextField("Username");
+        password = new PasswordField("Password");
 
         addComponent(label);
         addComponent(username);
@@ -48,8 +48,8 @@ public class LoginView extends VerticalLayout implements View {
         Button button = new Button("Log In", new Button.ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-                getUI().getNavigator().navigateTo(YapssUI.MAINVIEW);
                 currentUser = username.getValue();
+                getUI().getNavigator().navigateTo(YapssUI.MAINVIEW + "/" + currentUser); //populate in database instead?
             }
 
         });

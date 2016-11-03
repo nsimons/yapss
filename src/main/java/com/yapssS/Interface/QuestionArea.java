@@ -53,10 +53,9 @@ public class QuestionArea extends VerticalLayout {
 
         postQuestionBttn.setClickShortcut(ShortcutAction.KeyCode.ENTER);
 
-        Button deleteButton = new Button("Delete Question");
-        deleteButton.addClickListener(click-> questionList.deleteCompleted());
-        addComponent(deleteButton);
-
-
+        // disable since it doesnt work anymore...
+        //Button deleteButton = new Button("Delete Question");
+        //deleteButton.addClickListener(click-> questionList.deleteCompleted());
+        //addComponent(deleteButton);
     }
 }

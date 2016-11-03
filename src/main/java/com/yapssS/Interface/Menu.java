@@ -3,6 +3,7 @@
  * Created by Isokeke on 30.10.2016.
  */
 package com.yapssS.Interface;
+import com.vaadin.ui.Label;
 import com.yapssS.YapssUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
@@ -12,8 +13,12 @@ import com.vaadin.ui.Button.ClickEvent;
 @SuppressWarnings("serial")
 public class Menu extends CustomComponent {
 
+    private Label currentUserLabel;
+
     public Menu() {
         HorizontalLayout layout = new HorizontalLayout();
+        currentUserLabel = new Label();
+        layout.addComponent(currentUserLabel);
         layout.addComponent(mainButton());
         layout.addComponent(logoutButton());
         layout.setSizeUndefined();
@@ -41,6 +46,10 @@ public class Menu extends CustomComponent {
             }
         });
         return button;
+    }
+
+    public void setCurrentUserLabel(String user) {
+        currentUserLabel.setValue(user);
     }
 
     private String getLogoutPath() {
